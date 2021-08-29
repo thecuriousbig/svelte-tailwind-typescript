@@ -2,7 +2,7 @@
 
 ---
 
-# svelte app template with tailwindcss + typescript + eslint
+# svelte app template with tailwindcss + typescript + eslint + prettier
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/thecuriousbig/svelte-tailwind-typescript.
 
@@ -59,6 +59,10 @@ yarn run build
 
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
 
+
+## Pre-commit lint
+
+This project use `husky` and `lint-staged` to perform pre-commit hooks and lint files before commit. You can custom hooks by edit `.husky/pre-commit` files
 
 ## Single-page app mode
 
