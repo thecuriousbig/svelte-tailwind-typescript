@@ -1,12 +1,13 @@
-const production = !process.env.ROLLUP_WATCH
 module.exports = {
   purge: {
-    content: [
-      './src/**/*.svelte',
-      './src/**/*.html',
-      './public/index.html',
-    ],
-    enable: !production
+    enabled: !process.env.ROLLUP_WATCH,
+    content: ['./public/index.html', './src/**/*.svelte'],
+    options: {
+      defaultExtractor: content => [
+        ...(content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []),
+        ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
+      ],
+    },
   },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
