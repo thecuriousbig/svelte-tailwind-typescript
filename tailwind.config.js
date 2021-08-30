@@ -1,15 +1,15 @@
 module.exports = {
+  mode: 'jit',
   purge: {
     enabled: !process.env.ROLLUP_WATCH,
     content: ['./public/index.html', './src/**/*.svelte'],
     options: {
-      defaultExtractor: content => [
-        ...(content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []),
-        ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
-      ],
+      whitelistPatterns: [/svelte-/],
+      defaultExtractor: (content) =>
+        [...content.matchAll(/(?:class:)*([\w\d-/:%.]+)/gm)].map(([_match, group, ..._rest]) => group),
     },
   },
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: 'class',
   theme: {
     extend: {},
   },
